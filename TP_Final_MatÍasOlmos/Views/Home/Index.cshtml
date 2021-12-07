@@ -1,0 +1,48 @@
+﻿@model TP_Final_MatÍasOlmos.ViewModels.ProductosViewModel
+
+@{ 
+    ViewData["Title"] = "Home Page";
+    List<Producto> favoritosList = ViewBag.favoritosList;
+    int count = 0;
+}
+
+
+<div>
+    <div class="text-center">
+        <h1 class="display-4">Bienvenido</h1>
+
+        <div style="text-align: -webkit-center;">
+            <div style="height:100%; width: 700px;" id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                   @foreach (var items in favoritosList)
+                   {
+                        if (items.favorito == true)
+                        {
+                           count++;
+                            <div class="carousel-item @(count == 1 ? "active" : "")">
+
+                           @if (!string.IsNullOrEmpty(items.urlImagen))
+                           {
+                            <a asp-controller="Productos" asp-action="Details" asp-route-id="@items.Id"><img style="height:400px;object-fit:cover" src="~/images/productos/@items.urlImagen" class="img-thumbnail" asp-append-version="true" alt="Imagen del Producto" /></a>
+                           }
+                            <div style="background: #0000009e;" class="carousel-caption d-none d-md-block">
+                                <h5>@Html.DisplayFor(modelItem => items.nombre)</h5>
+                                <p>@Html.DisplayFor(modelItem => items.descripcion)</p>
+                            </div>
+                        </div>
+                        }
+                   }
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>

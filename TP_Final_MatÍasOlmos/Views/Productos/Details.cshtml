@@ -1,0 +1,68 @@
+﻿@model TP_Final_MatÍasOlmos.Models.Producto
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalles del Producto</h1>
+
+<div>
+    <h4>Producto</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.precio)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.precio)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.descripcion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.descripcion)
+        </dd>
+        <dt class="col-sm-2">
+            @if (!string.IsNullOrEmpty(Model.urlImagen))
+            {
+    <img style="max-width:75px" src="~/images/productos/@Model.urlImagen" class="img-thumbnail" asp-append-version="true" alt="Imagen de Alumno" />            }
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.urlImagen)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.favorito)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.favorito)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.categoria)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.categoria.descripcion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.marca)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.marca.descripcion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.proveedor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.proveedor.nombre)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Editar</a> |
+    <a asp-action="Index">Volver al listado de productos</a>
+</div>
